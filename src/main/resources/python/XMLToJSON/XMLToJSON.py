@@ -1,3 +1,4 @@
+import os
 import requests
 import json
 import xmltodict
@@ -10,7 +11,10 @@ all_data = []
 page_no = 1
 num_of_rows = 100
 
-json_file_path = "/home/ubuntu/how/python/apiJSON.json"
+json_file_path = "/home/ubuntu/how/apiJSON.json"
+dir_path = os.path.dirname(json_file_path)
+if not os.path.exists(dir_path):
+    os.makedirs(dir_path)
 
 while True:
     # API 요청 URL 구성
