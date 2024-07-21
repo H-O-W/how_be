@@ -10,7 +10,7 @@ all_data = []
 page_no = 1
 num_of_rows = 100
 
-json_file_path = "python/apiJSON.json"
+json_file_path = "/home/ubuntu/how/python/apiJSON.json"
 
 while True:
     # API 요청 URL 구성
