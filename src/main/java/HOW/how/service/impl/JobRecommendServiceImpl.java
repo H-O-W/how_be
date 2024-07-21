@@ -31,10 +31,10 @@ public class JobRecommendServiceImpl implements JobRecommendService {
     private final MemberDetailRepository memberDetailRepository;
     private final ApiDataRepository apiDataRepository;
     private final GetAuthenticationService getAuthenticationService;
-    private static final String RECOMMEND_JOBS_SCRIPT_PATH = "/python/recommendJobs.py";
-    private static final String JOB_TITLES_PATH = "/python/job_title.json";
-    private static final String CATEGORY_SCRIPT_PATH = "/python/createJobCategory.py";
-    private static final String JOB_CATEGORIES_PATH = "/python/job_category.json";
+    private static final String RECOMMEND_JOBS_SCRIPT_PATH = "python/recommendJobs.py";
+    private static final String JOB_TITLES_PATH = "python/job_title.json";
+    private static final String CATEGORY_SCRIPT_PATH = "python/createJobCategory.py";
+    private static final String JOB_CATEGORIES_PATH = "python/job_category.json";
 
 
     @Override
