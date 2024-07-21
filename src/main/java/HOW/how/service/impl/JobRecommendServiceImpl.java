@@ -41,9 +41,14 @@ public class JobRecommendServiceImpl implements JobRecommendService {
         Member member = getAuthenticationService.getAuthentication();
         Optional<MemberDetail> memberDetail = memberDetailRepository.findByMember(member);
         if (memberDetail.isPresent()) {
-            return recommendJobs(false);
+            Optional<JobRecommend> jobRecommend = jobRecommendRepository.findByMember(member);
+            if(jobRecommend.isPresent()) {
+                return recommendJobs(true);
+            }else {
+                return recommendJobs(false);
+            }
         }else {
-            return recommendJobs(true);
+            throw new EntityNotFoundException("MemberDetail not found for MemberId: " + member.getId());
         }
     }
 
@@ -79,7 +84,15 @@ public class JobRecommendServiceImpl implements JobRecommendService {
                 List<Map<String,Object>> recommendedJobs = executePythonScript(tempUserInfoJsonFile.toString(), tempCompanyJsonFile.toString());
 
                 JobRecommend jobRecommend = new JobRecommend();
-                if(!isUpdate){
+                if(isUpdate){
+                    Optional<JobRecommend> jobRecommendOptional = jobRecommendRepository.findByMember(member);
+                    if(jobRecommendOptional.isPresent()){
+                        jobRecommend = jobRecommendOptional.get();
+                    }else {
+                        throw new EntityNotFoundException("JobRecommend not found for MemberId: " + member.getId());
+                    }
+                }else {
+                    jobRecommend = new JobRecommend();
                     jobRecommend.setMember(member);
                 }
                 jobRecommend.setCompanyInfos(recommendedJobs);
