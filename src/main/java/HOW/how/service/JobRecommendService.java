@@ -6,8 +6,7 @@ import HOW.how.dto.JobRecommendDTO;
 
 
 public interface JobRecommendService {
-    JobRecommend createJobRecommend();
-    JobRecommend updateJobRecommend();
+    JobRecommend saveJobRecommend();
     JobRecommend recommendJobs(boolean isUpdate);
     JobRecommendDTO getJobRecommends();
 }

@@ -17,12 +17,7 @@ public class JobRecommendController {
 
     @PostMapping("/save")
     public ResponseEntity<JobRecommend> saveRecommendJobs() {
-         return ResponseEntity.ok(this.jobRecommendService.createJobRecommend());
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<JobRecommend> updateRecommendJobs() {
-        return ResponseEntity.ok(this.jobRecommendService.updateJobRecommend());
+         return ResponseEntity.ok(this.jobRecommendService.saveJobRecommend());
     }
 
     @GetMapping("/get")

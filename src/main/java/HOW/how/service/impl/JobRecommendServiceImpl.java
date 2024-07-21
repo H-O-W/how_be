@@ -36,16 +36,18 @@ public class JobRecommendServiceImpl implements JobRecommendService {
     private static final String CATEGORY_SCRIPT_PATH = "/home/ubuntu/how/python/createJobCategory.py";
     private static final String JOB_CATEGORIES_PATH = "/home/ubuntu/how/python/job_category.json";
 
-
     @Override
-    public JobRecommend createJobRecommend() {
-        return recommendJobs(false);
+    public JobRecommend saveJobRecommend() {
+        Member member = getAuthenticationService.getAuthentication();
+        Optional<MemberDetail> memberDetail = memberDetailRepository.findByMember(member);
+        if (memberDetail.isPresent()) {
+            return recommendJobs(false);
+        }else {
+            return recommendJobs(true);
+        }
     }
 
-    @Override
-    public JobRecommend updateJobRecommend() {
-        return recommendJobs(true);
-    }
+
 
     @Override
     public JobRecommend recommendJobs(boolean isUpdate) {
