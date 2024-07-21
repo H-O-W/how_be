@@ -24,8 +24,8 @@ public class ApiDataServiceImpl implements ApiDataService {
 
     @Override
     public List<ApiData> saveApiData() {
-        String scriptPath = "home/ubuntu/how/XMLToJSON.py";
-        String jsonFilePath = "home/ubuntu/how/apiJSON.json";
+        String scriptPath = "/python/XMLToJSON.py";
+        String jsonFilePath = "/python/apiJSON.json";
         List<ApiData> apiDataList = new ArrayList<>();
 
         executePythonFile(scriptPath);
