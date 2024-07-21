@@ -56,7 +56,7 @@ public class ApiDataServiceImpl implements ApiDataService {
     public void executePythonFile(String scriptPath) {
         try {
             Path filePath = Paths.get(scriptPath);
-            ProcessBuilder pb = new ProcessBuilder("python", filePath.toString());
+            ProcessBuilder pb = new ProcessBuilder("python3", filePath.toString());
             Process process = pb.start();
 
             // 파이썬 출력 및 오류 처리

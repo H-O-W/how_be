@@ -120,7 +120,7 @@ public class JobRecommendServiceImpl implements JobRecommendService {
     }
 
     private List<Map<String, Object>> executePythonScript(String tempUserInfoJsonFilePath, String tempCompanyJsonFile) throws Exception {
-        ProcessBuilder processBuilder = new ProcessBuilder("python", RECOMMEND_JOBS_SCRIPT_PATH,tempUserInfoJsonFilePath,tempCompanyJsonFile,JOB_CATEGORIES_PATH);
+        ProcessBuilder processBuilder = new ProcessBuilder("python3", RECOMMEND_JOBS_SCRIPT_PATH,tempUserInfoJsonFilePath,tempCompanyJsonFile,JOB_CATEGORIES_PATH);
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
 
@@ -175,7 +175,7 @@ public class JobRecommendServiceImpl implements JobRecommendService {
     private void updateJobCategories() throws Exception {
         updateJobTitles();
 
-        ProcessBuilder processBuilder = new ProcessBuilder("python",CATEGORY_SCRIPT_PATH,JOB_TITLES_PATH ,JOB_CATEGORIES_PATH);
+        ProcessBuilder processBuilder = new ProcessBuilder("python3",CATEGORY_SCRIPT_PATH,JOB_TITLES_PATH ,JOB_CATEGORIES_PATH);
         processBuilder.redirectErrorStream(true);
         Process process = processBuilder.start();
 
